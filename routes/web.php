@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,3 +10,5 @@ Route::get('/', function () {
 Route::get('/action', function() {
     return ('Olá mundo!');
 });
+
+Route::get('/controller', [MainController::class, 'index']);
