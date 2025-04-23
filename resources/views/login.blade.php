@@ -13,14 +13,14 @@
                     <!-- form -->
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-12">
-                            <form action="/loginSubmit" method="post"> <!-- O atributo 'action' define para onde os dados do formulário serão enviados quando o método POST for executado -->
+                            <form action="/loginSubmit" method="post" novalidate> <!-- O atributo 'action' define para onde os dados do formulário serão enviados quando o método POST for executado -->
 
                                 @csrf <!-- CSRF (Cross-Site Request Forgery) é um método de proteção contra ataques que forçam ações indesejadas em aplicações web.
                                     No Laravel, usamos csrf nos formulários para garantir que a requisição foi feita pelo usuário autenticado. -->
 
                                 <div class="mb-3">
                                     <label for="text_username" class="form-label">Username</label>
-                                    <input type="text" class="form-control bg-dark text-info" name="text_username" value="{{ old('text_username') }}">
+                                    <input type="email" class="form-control bg-dark text-info" name="text_username" value="{{ old('text_username') }}" required>
 
                                     {{-- Show Error -> indica o erro abaixo de cada form, no caso, campo vazio. --}}
 
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="text_password" class="form-label">Password</label>
-                                    <input type="password" class="form-control bg-dark text-info" name="text_password" value="{{ old('text_password') }}">
+                                    <input type="password" class="form-control bg-dark text-info" name="text_password" value="{{ old('text_password') }}" required>
 
                                     {{-- Show Error -> indica o erro abaixo de cada form, no caso, campo vazio. --}}
 
