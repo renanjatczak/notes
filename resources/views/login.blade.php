@@ -20,11 +20,25 @@
 
                                 <div class="mb-3">
                                     <label for="text_username" class="form-label">Username</label>
-                                    <input type="text" class="form-control bg-dark text-info" name="text_username">
+                                    <input type="text" class="form-control bg-dark text-info" name="text_username" value="{{ old('text_username') }}">
+
+                                    {{-- Show Error -> indica o erro abaixo de cada form, no caso, campo vazio. --}}
+
+                                    @error('text_username') {{-- funciona da mesma forma que if else --}}
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="text_password" class="form-label">Password</label>
-                                    <input type="password" class="form-control bg-dark text-info" name="text_password">
+                                    <input type="password" class="form-control bg-dark text-info" name="text_password" value="{{ old('text_password') }}">
+
+                                    {{-- Show Error -> indica o erro abaixo de cada form, no caso, campo vazio. --}}
+
+                                    @error('text_password') {{-- funciona da mesma forma que if else --}}
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-secondary w-100">LOGIN</button>
@@ -38,8 +52,9 @@
                         <small>&copy; <?= date('Y') ?> Notes</small>
                     </div>
 
-                    {{-- errors --}}
-                    @if ($errors->any())
+                    {{-- errors -> apresenta os erros abaixo do form, que são os campos vazios. --}}
+
+                    {{-- @if ($errors->any())
                         <div class="alert alert-danger mt-3">
                             <ul class="m-0">
                                 @foreach ($errors->all() as $error)
@@ -47,7 +62,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                    @endif --}}
 
                 </div>
             </div>
