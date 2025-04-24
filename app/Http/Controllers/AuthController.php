@@ -35,6 +35,42 @@ class AuthController extends Controller
         $username = $request->input('text_username');
         $password = $request->input('text_password');
 
+        //check if user exists
+        $user = User::where('username', $username)
+                    ->where('deleted_at', NULL)
+                    ->first();
+
+        if(!$user){
+            return redirect()
+                    ->back()
+                    ->withInput()
+                    ->with('loginError',
+                     'Username ou Password incorreto.');
+        }
+
+        //check if password is correct
+        if(!password_verify($password, $user->password)){
+            return redirect()
+                    ->back()
+                    ->withInput()
+                    ->with('loginError',
+                     'Username ou Password incorreto.');
+        }
+
+        //update last login
+        $user->last_login = date('Y-m-d H:i:s');
+        $user->save();
+
+        // login user
+        session([
+            'user' => [
+                'id' => $user->id,
+                'username' => $user->username
+            ]
+        ]);
+
+        echo 'LOGIN COM SUCESSO!';
+
         /*
         //test database connection
         try {
@@ -48,14 +84,21 @@ class AuthController extends Controller
         */
 
         //get all the users from the database
-        //$users = User::all()->toArray();
-
-        //as an object instance of the model's class
-        $userModel = new User();
-        $users = $userModel->all()->toArray();
+        /*
+        $users = User::all()->toArray();
 
         echo '<pre>';
         print_r($users);
+        */
+
+        //esse bloco de baixo, faz a mesma coisa que o de cima!
+        //as an object instance of the model's class
+
+        /*$userModel = new User();
+        $users = $userModel->all()->toArray();
+
+        echo '<pre>';
+        print_r($users);*/
     }
 
     public function logout()
