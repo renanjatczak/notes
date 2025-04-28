@@ -6,7 +6,7 @@
             <div class="col">
 
                 @include('topBar')
-                
+
                 <!-- no notes available -->
                 <div class="row mt-5">
                     <div class="col text-center">
