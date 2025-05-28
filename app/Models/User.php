@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Note;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model

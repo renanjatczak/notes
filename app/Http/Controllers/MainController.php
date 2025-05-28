@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
+use App\Service\operations;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -26,27 +27,21 @@ class MainController extends Controller
 
    public function editNote($id)
    {
-        $id = $this->decryptId($id);
+        //$id = $this->decryptId($id);
         // carregar a nota com o id fornecido
+
+        $id = operations::decryptId($id);
         echo " I'm editing the note with id = $id";
    }
 
    public function deleteNote($id)
    {
-        $id = $this->decryptId($id);
+        //$id = $this->decryptId($id);
         // Aqui você normalmente excluiria a nota do banco de dados
+
+        $id = operations::decryptId($id);
         echo " I'm deleting the note with id = $id";
    }
 
-   //verifica se o $id está criptografado
-   private function decryptId($id)
-   {
-        try {
-            return Crypt::decryptId($id);
-        } catch (DecryptException $e) {
-            return redirect()->route('home');
-        }
 
-        return $id;
-   }
 }
