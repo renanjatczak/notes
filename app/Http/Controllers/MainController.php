@@ -15,7 +15,11 @@ class MainController extends Controller
    {
         // load user's notes
         $id = session('user.id');
-        $notes = User::find($id)->notes()->get()->toArray();
+        $notes = User::find($id)
+            ->notes()
+            //->whereNotNull('deleted_at') // Ensure we only get notes that are not deleted
+            ->get()
+            ->toArray();
 
         //show home view
         return view('home', ['notes' => $notes]);
