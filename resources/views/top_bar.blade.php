@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="col text-center">
-        A simple <span class="text-warning">Laravel</span> project!
+        Um Simples Projeto <span class="text-warning">LARAVEL</span>
     </div>
     <div class="col">
         <div class="d-flex justify-content-end align-items-center">

@@ -5,13 +5,13 @@
                 <div class="col">
                     <h4 class="text-info">{{ $note['title'] }}</h4>
                     <small class="text-secondary">
-                        <span class="opacity-75 me-2">Created at:</span>
+                        <span class="opacity-75 me-2">Criado em:</span>
                         <strong>{{ date('Y-m-d H:i:s', strtotime($note['created_at'])) }}</strong>
                     </small>
 
                     @if($note['created_at'] != $note['updated_at'])
                         <small class="text-secondary ms-5">
-                            <span class="opacity-75 me-2">Updated at:</span>
+                            <span class="opacity-75 me-2">Atualizado em:</span>
                             <strong>{{ date('Y-m-d H:i:s', strtotime($note['updated_at'])) }}</strong>
                         </small>
                     @endif
@@ -42,15 +42,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="deleteModalLabel{{ $note['id'] }}">Confirmar exclusão</h5>
+                <h5 class="modal-title" id="deleteModalLabel{{ $note['id'] }}">CONFIRMAR EXCLUSÃO</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div class="modal-body">
                 Tem certeza que deseja excluir a nota <strong>"{{ $note['title'] }}"</strong>?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <a href="{{ route('delete', ['id' => Crypt::encrypt($note['id'])]) }}" class="btn btn-danger">Sim, excluir</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                <a href="{{ route('delete', ['id' => Crypt::encrypt($note['id'])]) }}" class="btn btn-danger">SIM, EXCLUIR</a>
             </div>
         </div>
     </div>

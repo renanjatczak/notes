@@ -27,14 +27,14 @@
                 <div class="row mt-3">
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label">Note Title</label>
+                            <label class="form-label">TÍTULO</label>
                             <input type="text" class="form-control bg-primary text-white" name="text_title" value="{{ old('text_title', $note->title) }}">
                             @error('text_title')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Note Text</label>
+                            <label class="form-label">TEXTO</label>
                             <textarea class="form-control bg-primary text-white" name="text_note" rows="5">{{ old('text_note', $note->text) }}</textarea>
                             @error('text_note')
                                 <div class="text-danger">{{ $message }}</div>
@@ -46,10 +46,10 @@
                     <div class="col text-end">
                         <!-- Botão que chama o modal -->
                         <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#cancelModal">
-                            <i class="fa-solid fa-ban me-2"></i>Cancel
+                            <i class="fa-solid fa-ban me-2"></i>CANCELAR
                         </button>
                         <button type="submit" class="btn btn-secondary px-5">
-                            <i class="fa-regular fa-circle-check me-2"></i>Update
+                            <i class="fa-regular fa-circle-check me-2"></i>ATUALIZAR
                         </button>
                     </div>
                 </div>
@@ -64,15 +64,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="cancelModalLabel">Cancelar Edição</h5>
+                <h5 class="modal-title" id="cancelModalLabel">CANCELAR EDIÇÃO</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div class="modal-body">
                 Tem certeza que deseja cancelar a edição desta nota?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar editando</button>
-                <a href="{{ route('home') }}" class="btn btn-danger">Sim, cancelar</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CONTINUAR EDITANDO</button>
+                <a href="{{ route('home') }}" class="btn btn-danger">SIM, CANCELAR</a>
             </div>
         </div>
     </div>
