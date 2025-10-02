@@ -5,21 +5,13 @@
             <div class="col-md-6 col-sm-8">
                 <div class="card p-5">
 
-                    <!-- logo -->
                     <div class="text-center p-3">
                         <img src="assets/images/logo.png" alt="Notes logo">
                     </div>
 
-                    @if (session('success'))
-                        <div class="alert alert-success text-center">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    <!-- form -->
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-12">
-                            <form action="{{ route('loginSubmit') }}" method="post" novalidate>
+                            <form action="{{ route('registerSubmit') }}" method="post" novalidate>
                                 @csrf
 
                                 <div class="mb-3">
@@ -39,25 +31,22 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-secondary w-100">LOGIN</button>
+                                    <label for="text_password_confirmation" class="form-label">CONFIRMAR SENHA</label>
+                                    <input type="password" class="form-control bg-dark text-info" name="text_password_confirmation" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-success w-100">CRIAR CONTA</button>
                                 </div>
                             </form>
 
-                            <!-- Link para registro -->
                             <div class="text-center mt-2">
-                                <a href="{{ route('register') }}" class="text-secondary">Não tem conta? <strong>Registre-se</strong></a>
+                                <a href="/login" class="text-secondary">Já tem conta? Faça login</a>
                             </div>
 
-                            <!-- Message Error -->
-                            @if (session('loginError'))
-                                <div class="alert alert-danger text-center mt-3">
-                                    {{ session('loginError') }}
-                                </div>
-                            @endif
                         </div>
                     </div>
 
-                    <!-- copy -->
                     <div class="text-center text-secondary mt-3">
                         <small>&copy; <?= date('Y') ?> Notes</small>
                     </div>
