@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Route;
 //Serão executadas se o usuário não existir ou não estiver logado.
 Route::middleware([CheckIsNotLogged::class])->group(function(){
     Route::get('/login', [AuthController::class, 'login']);
-    Route::post('/loginSubmit', [AuthController::class, 'loginSubmit']);
+    Route::post('/loginSubmit', [AuthController::class, 'loginSubmit'])->name('loginSubmit');
+
+    // Registro
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/registerSubmit', [AuthController::class, 'registerSubmit'])->name('registerSubmit');
 });
 
 //Só serão executadas se o usuário estiver logado
